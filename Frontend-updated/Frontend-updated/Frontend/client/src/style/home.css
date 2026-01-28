@@ -1,0 +1,498 @@
+/* ===== BASE ===== */
+.home-container {
+  background: #f4f7fb;
+  padding-bottom: 40px;
+}
+
+/* ===== COMMON CARD ===== */
+.newwww {
+  border-radius: 18px;
+  border: 1px solid #e6edf5;
+  border-top: 4px solid #f37021;
+  /* Official Orange Accent */
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+  transition: all 0.35s ease;
+}
+
+.newwww:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 25px 55px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== CARD BODY ===== */
+.card-body.newwww {
+  padding: 24px;
+}
+
+/* ===== HEADINGS ===== */
+h4.text-primary {
+  color: #003366 !important;
+}
+
+.text-cdac-blue {
+  color: #003366;
+  /* Official Navy Blue */
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #f37021, #003366);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.card-header.newwww {
+  background: #003366;
+  /* Solid Navy Blue for uniformity */
+  color: white;
+  font-weight: 600;
+  border-radius: 18px 18px 0 0;
+}
+
+/* ===== CAROUSEL ===== */
+.hero-fixed-height {
+  height: 65vh;
+  /* Fixed height as requested */
+  min-height: 500px;
+  /* valid minimum to prevent squashing on very small screens */
+}
+
+.carousel-img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+.login-card-body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* Vertically center the content */
+}
+
+/* ===== CAROUSEL CONTROLS ===== */
+.carousel {
+  margin-top: 10px;
+  overflow: hidden;
+  /* Keep everything inside */
+  position: relative;
+  border-radius: 0 0 14px 14px;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 40px !important;
+  height: 40px !important;
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  /* Semi-transparent black */
+  border-radius: 50% !important;
+  top: 50% !important;
+  bottom: auto !important;
+  /* Force override bootstrap */
+  transform: translateY(-50%) !important;
+  opacity: 0;
+  transition: all 0.2s ease !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 !important;
+  z-index: 10 !important;
+}
+
+/* ===== CAROUSEL INDICATORS ===== */
+.carousel-indicators {
+  bottom: 10px !important;
+  /* Move INSIDE the image */
+  margin-bottom: 0 !important;
+  z-index: 10;
+}
+
+.carousel-indicators button {
+  width: 10px !important;
+  height: 10px !important;
+  border-radius: 50% !important;
+  background-color: #555 !important;
+  /* Gray */
+  opacity: 0.5 !important;
+  border: none !important;
+  margin: 0 5px !important;
+}
+
+.carousel-indicators button.active {
+  background-color: #000 !important;
+  /* Black active */
+  opacity: 1 !important;
+}
+
+.carousel-control-prev {
+  left: 10px;
+  /* Inside Left */
+}
+
+.carousel-control-next {
+  right: 10px;
+  /* Inside Right */
+}
+
+/* Show controls on hover */
+.carousel:hover .carousel-control-prev,
+.carousel:hover .carousel-control-next {
+  opacity: 1;
+}
+
+/* Reset icon filter (keep white arrows) */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: none;
+  width: 20px;
+  height: 20px;
+}
+
+/* Social Buttons */
+.btn-facebook,
+.btn-linkedin,
+.btn-google {
+  background-color: #003366 !important;
+  color: white !important;
+  border: 1px solid #002244 !important;
+  padding: 6px 12px !important;
+  /* Reduced padding */
+  font-size: 0.9rem !important;
+  /* Smaller text */
+  transition: all 0.3s ease;
+  /* Add transition for animation */
+}
+
+/* ===== LOGIN / SOCIAL ===== */
+.social-btn {
+  border-radius: 6px;
+  /* Slightly squarer like image */
+  font-weight: 600;
+  padding: 8px 10px;
+  color: white !important;
+  /* Ensure text is white */
+  border: none;
+  font-size: 15px;
+  /* Adjust font size */
+}
+
+/* White Icon Wrapper Style */
+/* Icon Wrapper - Compact */
+.icon-box {
+  width: 26px;
+  /* Smaller icon box */
+  height: 26px;
+  background-color: white;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-facebook:hover,
+.btn-linkedin:hover,
+.btn-google:hover {
+  background-color: #002244 !important;
+  color: white !important;
+  box-shadow: 0 4px 10px rgba(0, 51, 102, 0.4);
+  /* Enhanced shadow on hover */
+  transform: translateY(-2px);
+  /* Slight lift effect like email button */
+}
+
+.email-login-btn {
+  background: white !important;
+  color: #003366 !important;
+  border: 2px solid #003366 !important;
+  font-weight: 700 !important;
+  font-size: 0.95rem !important;
+  /* Smaller text */
+  padding: 6px 10px !important;
+  /* Reduced padding */
+  margin-top: 8px;
+  /* Reduced margin */
+  transition: all 0.3s ease;
+}
+
+.email-login-btn:hover {
+  background: #003366 !important;
+  color: white !important;
+  box-shadow: 0 4px 10px rgba(0, 51, 102, 0.2);
+}
+
+/* ===== CAROUSEL ===== */
+.carousel-img {
+  height: 100% !important;
+  /* Allow stretching to fill container */
+  min-height: 0 !important;
+  /* Allow shrinking to match Login Card */
+  object-fit: cover;
+  object-position: top center;
+  /* Focus on faces (top) */
+  border-radius: 14px;
+}
+
+
+/* ===== CUSTOM BUTTONS ===== */
+
+
+/* ===== LIST ===== */
+.list-unstyled li {
+  padding: 6px 0;
+  color: #555;
+  font-weight: 500;
+}
+
+/* ===== WIDGET CARDS ===== */
+.card-header i {
+  color: #ff9933;
+}
+
+/* ===== ALUMNI ===== */
+.alumni-card {
+  background: white;
+  border: 1px solid #eee;
+  /* Light border definition */
+  border-radius: 12px;
+  padding: 25px 20px;
+  /* More internal breathing room */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  /* Soft, premium shadow */
+  transition: all 0.35s ease;
+  height: 100%;
+  /* Uniform height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.alumni-card:hover {
+  transform: translateY(-8px);
+  /* Higher lift */
+  border-color: #f37021;
+  /* Orange border on hover */
+  box-shadow: 0 15px 30px rgba(243, 112, 33, 0.15);
+  /* Orange-tinted shadow */
+}
+
+.alumni-card img {
+  width: 140px;
+  /* Increased size for better face visibility */
+  height: 140px;
+  object-fit: cover;
+  object-position: top center;
+  /* Focus on faces (top) */
+  border: 4px solid #f37021;
+  /* Slightly thicker border for larger image */
+  /* Official Orange */
+}
+
+.alumni-card h6 {
+  margin-top: 10px;
+  font-weight: 600;
+  color: #003366;
+}
+
+.alumni-card p {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+/* ===== AVATAR STACK ===== */
+.avatar-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.avatar-group img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  object-fit: cover;
+  margin-left: -10px;
+}
+
+.avatar-group img:first-child {
+  margin-left: 0;
+}
+
+.avatar-more {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #f37021;
+  /* Orange */
+  color: white;
+  border: 2px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: bold;
+  margin-left: -10px;
+  z-index: 2;
+}
+
+.company-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.company-icons i {
+  font-size: 1.1rem;
+  color: #adb5bd;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.company-icons i:hover {
+  color: #003366;
+  transform: scale(1.2);
+}
+
+.company-icons img {
+  height: 20px;
+  width: auto;
+  filter: grayscale(100%);
+  opacity: 0.5;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.company-icons img:hover {
+  filter: none;
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+/* ===== LINKS ===== */
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+/* Register Link Specific Style */
+/* Register Link Specific Style */
+.register-link {
+  text-decoration: none !important;
+  color: #f37021 !important;
+  /* Official Orange */
+  font-weight: 700 !important;
+  /* Bold */
+  font-size: 16px !important;
+  /* Ensure it is not small */
+  display: block;
+  /* Make it block to sit nicely under button */
+  margin-top: 15px;
+}
+
+.register-link:hover {
+  text-decoration: underline !important;
+  color: #0d6efd !important;
+  /* Turn Bright Blue on hover */
+}
+
+/* ===== RESPONSIVE HOME FIXES ===== */
+@media (max-width: 991px) {
+  .hero-fixed-height {
+    height: auto !important;
+    min-height: 400px;
+  }
+
+  .carousel-img {
+    height: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-fixed-height {
+    min-height: auto;
+    height: auto !important;
+  }
+
+  /* Carousel Image on Mobile */
+  .carousel-img {
+    height: 250px;
+    /* Smaller height for mobile */
+    border-radius: 12px;
+  }
+
+  /* Login Card on Mobile */
+  .login-card {
+    height: auto !important;
+    /* Allow it to grow */
+  }
+
+  .login-card-body {
+    padding: 20px !important;
+  }
+
+  /* Text Sizes */
+  h4.text-cdac-blue {
+    font-size: 1.2rem;
+  }
+
+  .card-body.newwww {
+    padding: 15px;
+  }
+
+  /* Alumni Cards */
+  .alumni-card {
+    margin-bottom: 15px;
+    padding: 15px;
+  }
+
+  .alumni-card img {
+    width: 100px;
+    height: 100px;
+  }
+
+  /* Widget Cards */
+  .card-header.newwww {
+    font-size: 1rem;
+    padding: 10px 15px;
+  }
+
+  /* FIX: Login Card Buttons & Logos */
+  .btn-facebook,
+  .btn-linkedin,
+  .btn-google {
+    white-space: normal !important;
+    /* Allow text wrapping */
+    height: auto !important;
+    font-size: 0.8rem !important;
+    padding: 8px 10px !important;
+    text-align: left !important;
+  }
+
+  .company-icons {
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+    justify-content: center !important;
+  }
+
+  .company-icons i,
+  .company-icons img {
+    transform: scale(0.9);
+    /* Slightly smaller icons */
+  }
+
+  /* Ensure social buttons don't overflow */
+  .social-btn span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.8rem;
+  }
+}

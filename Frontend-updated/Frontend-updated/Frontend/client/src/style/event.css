@@ -1,0 +1,112 @@
+:root {
+  --cdac-blue: #003366;
+  --cdac-orange: #ff8c1a;
+  --cdac-orange-dark: #ff7a00;
+  --cdac-soft-bg: #fff4e8;
+}
+
+/* TITLE */
+.events-title {
+  text-align: center;
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: var(--cdac-blue);
+}
+
+.events-subtitle {
+  text-align: center;
+  color: #555;
+  margin-top: 8px;
+  font-size: 1.05rem;
+}
+
+/* EVENT CARD */
+.event-card {
+  background: linear-gradient(180deg, #ffffff, var(--cdac-soft-bg));
+  border-radius: 20px;
+  padding: 28px 22px 22px;
+  height: 100%;
+  border-left: 6px solid var(--cdac-orange);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.event-body {
+  flex-grow: 1; /* 🔑 this equalizes height */
+}
+
+.event-card:hover {
+   transform: translateY(-8px);
+  border-color: #ff9933;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+}
+
+/* BADGE */
+.event-badge {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  background: linear-gradient(
+    135deg,
+    var(--cdac-orange),
+    var(--cdac-orange-dark)
+  );
+  color: #fff;
+  padding: 6px 14px;
+  font-size: 0.75rem;
+  border-radius: 20px;
+  font-weight: 600;
+  z-index: 2;
+  white-space: nowrap;
+}
+
+/* TITLE */
+.event-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--cdac-blue);
+  margin-bottom: 12px;
+  margin-top: 6px;
+
+  /* 🔑 prevents text going under badge */
+  padding-right: 90px;
+}
+
+/* DESCRIPTION */
+.event-desc {
+  font-size: 0.95rem;
+  color: #444;
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+/* INFO */
+.event-info span {
+  display: block;
+  font-size: 0.85rem;
+  color: #555;
+  margin-bottom: 6px;
+}
+
+/* BUTTON */
+.event-btn {
+  margin-top: 20px; /* 🔥 pushes button to bottom */
+  align-self: flex-start;
+
+  background: linear-gradient(135deg, var(--cdac-blue), #002244);
+  color: #fff;
+  border: none;
+  padding: 9px 22px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+}
+
+.event-btn:hover {
+  background: linear-gradient(
+    135deg,
+    var(--cdac-orange),
+    var(--cdac-orange-dark)
+  );
+  box-shadow: 0 10px 22px rgba(255, 140, 26, 0.45);
+}

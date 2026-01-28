@@ -1,0 +1,169 @@
+/* PAGE BASE */
+.career-page {
+  width: 100%;
+    overflow-x: hidden;
+}
+
+/* HERO */
+.career-hero {
+    position: relative;        /* ✅ anchor children */
+    width: 100%;
+    min-height: 260px;
+
+    background:
+      linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+      url("/images/docs/about.jpg") center/cover no-repeat;
+
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* HERO CONTENT */
+.career-hero-content {
+    width: 100%;
+    max-width: none;
+    /* ❌ remove centering constraint */
+    padding-left: 0px;
+    /* ✅ close to left edge */
+    padding-right: 20px;
+    text-align: left;
+}
+
+.career-hero-content h1 {
+    color: #fff;
+    font-size: 2.4rem;
+    font-weight: 600;
+    margin-bottom: 14px;
+    margin-left: 55px;
+}
+
+/* BREADCRUMB */
+.career-hero .breadcrumb-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    margin-left: 0px; 
+       /* ⬅ SAME AS TITLE */
+    margin-top: 80px;       /* ⬅ push it DOWN */
+
+    padding: 8px 16px;
+    border-radius: 10px;
+
+    background: rgba(255, 255, 255, 0.95);
+    color: #333;
+    font-size: 0.9rem;
+}
+
+/* Breadcrumb */
+.breadcrumb-pill {
+  margin-top: 15px;
+  display: inline-flex;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.15);
+  font-size: 0.85rem;
+  color: white;
+}
+@media (max-width: 768px) {
+    .career-hero-content {
+        padding-left: 20px;
+    }
+
+    .career-hero-content h1 {
+        font-size: 1.7rem;
+    }
+}
+
+/* ------------------------------------ */
+/* CARDS CONTAINER (FIXED)               */
+/* ------------------------------------ */
+.career-container {
+  margin-top: 40px;               /* ✅ cards start BELOW hero */
+  padding-bottom: 60px;
+}
+
+/* ------------------------------------ */
+/* LEFT INFO CARD                        */
+/* ------------------------------------ */
+.career-info-card {
+  background: white;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+.career-info-card img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+}
+
+.career-info-body {
+  padding: 22px;
+}
+
+.career-info-body h4 {
+  color: #003366;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.career-info-body p {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* ------------------------------------ */
+/* RIGHT CARDS                           */
+/* ------------------------------------ */
+.career-card {
+  background: white;
+  border-radius: 16px;
+  padding: 28px 22px;
+  height: 100%;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+  transition: all 0.35s ease;
+  border: 1px solid #eef2f7;
+}
+
+.career-card:hover {
+  transform: translateY(-8px);
+  border-color: #ff9933;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+}
+
+.career-card h4 {
+  color: #003366;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.career-card p {
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 18px;
+}
+
+/* ------------------------------------ */
+/* BUTTON                                */
+/* ------------------------------------ */
+.career-btn {
+  display: inline-block;
+  padding: 8px 18px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #ff9933, #ff6600);
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.career-btn:hover {
+  background: linear-gradient(135deg, #ff6600, #ff4400);
+  box-shadow: 0 10px 20px rgba(255, 153, 51, 0.4);
+}

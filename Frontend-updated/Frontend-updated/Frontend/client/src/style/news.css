@@ -1,0 +1,120 @@
+/* ===============================
+   COLOR VARIABLES (C-DAC THEME)
+================================ */
+:root {
+  --cdac-blue: #003366;
+  --cdac-orange: #FF8C1A;
+  --cdac-orange-dark: #FF7A00;
+  --cdac-orange-soft: #FFF2E6;
+  --cdac-orange-border: #FFB366;
+}
+
+/* ===============================
+   SECTION TITLE
+================================ */
+.news-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--cdac-blue);
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.news-title::after {
+  content: "";
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(135deg,
+      var(--cdac-orange),
+      var(--cdac-orange-dark));
+  display: block;
+  margin: 12px auto 0;
+  border-radius: 10px;
+}
+
+/* ===============================
+   CARD
+================================ */
+.news-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.35s ease;
+  background: #ffffff;
+}
+
+.news-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--cdac-orange);
+  box-shadow: 0 20px 40px rgba(0, 51, 102, 0.25);
+}
+
+/* ===============================
+   IMAGE
+================================ */
+.news-img-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.news-img-wrapper img {
+  height: 220px;
+  width: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.news-card:hover img {
+  transform: scale(1.08);
+}
+
+/* ===============================
+   DATE BADGE
+================================ */
+.news-date {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: linear-gradient(135deg,
+      var(--cdac-orange),
+      var(--cdac-orange-dark));
+  color: #ffffff;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  box-shadow: 0 6px 14px rgba(255, 140, 26, 0.45);
+}
+
+/* ===============================
+   CARD TEXT
+================================ */
+.news-card-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--cdac-blue);
+}
+
+.news-summary {
+  color: #444;
+  font-size: 0.95rem;
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+/* ===============================
+   BUTTON
+================================ */
+
+
+/* ===============================
+   MODAL HEADER
+================================ */
+.news-modal-header {
+  background: linear-gradient(135deg,
+      var(--cdac-blue),
+      #002244);
+  color: #ffffff;
+}
