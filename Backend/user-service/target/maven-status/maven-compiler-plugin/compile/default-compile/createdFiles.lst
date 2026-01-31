@@ -1,0 +1,6 @@
+com\cdacalumni\userservice\controller\MemberController.class
+com\cdacalumni\userservice\entity\Member.class
+com\cdacalumni\userservice\repository\MemberRepository.class
+com\cdacalumni\userservice\service\MemberService.class
+com\cdacalumni\userservice\dto\MemberDTO.class
+com\cdacalumni\userservice\UserServiceApplication.class

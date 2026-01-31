@@ -1,0 +1,16 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Run Backend (Maven Spring Boot)",
+			"type": "shell",
+			"command": "mvn spring-boot:run",
+			"args": [],
+			"isBackground": true,
+			"problemMatcher": [
+				"$javac"
+			],
+			"group": "build"
+		}
+	]
+}

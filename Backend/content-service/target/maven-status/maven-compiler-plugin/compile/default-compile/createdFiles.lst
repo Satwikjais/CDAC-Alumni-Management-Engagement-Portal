@@ -1,0 +1,8 @@
+com\cdacalumni\contentservice\entity\Testimonial.class
+com\cdacalumni\contentservice\ContentServiceApplication.class
+com\cdacalumni\contentservice\repository\TestimonialRepository.class
+com\cdacalumni\contentservice\dto\BlogDTO.class
+com\cdacalumni\contentservice\repository\BlogRepository.class
+com\cdacalumni\contentservice\service\BlogService.class
+com\cdacalumni\contentservice\controller\BlogController.class
+com\cdacalumni\contentservice\entity\Blog.class
