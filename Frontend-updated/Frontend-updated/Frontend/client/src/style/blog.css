@@ -1,0 +1,102 @@
+:root {
+  --cdac-blue: #003366;
+  --cdac-orange: #ff7a00;
+  --light-bg: #fff6ec;
+}
+
+/* HERO */
+.blog-hero {
+  background: linear-gradient(135deg, var(--cdac-blue), #002244);
+  padding: 70px 20px;
+  text-align: center;
+  color: #fff;
+}
+
+.blog-hero h1 {
+  font-size: 2.6rem;
+  font-weight: 700;
+}
+
+.breadcrumb-pill {
+  display: inline-block;
+  margin-top: 10px;
+  background: rgba(255,255,255,0.15);
+  padding: 6px 18px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+/* BOX */
+.blog-box {
+  background: linear-gradient(180deg, #fff, var(--light-bg));
+  padding: 45px;
+  border-radius: 28px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.08);
+}
+
+/* INTRO */
+.blog-intro {
+  max-width: 900px;
+  margin: 0 auto 30px;
+  text-align: center;
+  color: #555;
+}
+
+/* ACCORDION */
+.blog-accordion .accordion-item {
+  border: none;
+  margin-bottom: 18px;
+}
+
+.blog-accordion .accordion-button {
+  background: #f0f7ff;
+  color: var(--cdac-blue);
+  font-weight: 600;
+  border-radius: 14px !important;
+}
+
+.blog-accordion .accordion-button:not(.collapsed) {
+  background: linear-gradient(135deg, var(--cdac-blue), #002244);
+  color: #fff;
+}
+
+.blog-accordion .accordion-body {
+  padding: 20px 10px;
+}
+
+/* BLOG ITEM */
+.blog-item {
+  display: flex;
+  gap: 18px;
+  padding: 16px;
+  border-radius: 18px;
+  text-decoration: none;
+  margin-bottom: 12px;
+  transition: all 0.3s ease;
+  background: #fff;
+  border: 1px solid #eee;
+}
+
+.blog-item:hover {
+  transform: translateX(6px);
+  border-color: var(--cdac-orange);
+  box-shadow: 0 15px 30px rgba(255,122,0,0.25);
+}
+
+.blog-item img {
+  width: 110px;
+  height: 65px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.blog-item h5 {
+  color: var(--cdac-blue);
+  font-size: 1.05rem;
+  margin-bottom: 6px;
+}
+
+.blog-item p {
+  font-size: 0.9rem;
+  color: #555;
+}

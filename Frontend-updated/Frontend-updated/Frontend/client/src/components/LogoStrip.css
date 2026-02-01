@@ -1,0 +1,35 @@
+.scroll-container {
+  position: relative;
+  width: 100%;
+  background: #23272a;
+  padding: 15px 0;
+  /* Reduced padding */
+  overflow: hidden;
+  margin-bottom: 0 !important;
+}
+
+
+.scroll-track {
+  display: flex;
+  align-items: center;
+  gap: 100px;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+
+.scroll-track img {
+  height: 55px;
+  /* Reduced to match request */
+  object-fit: contain;
+}
+
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}

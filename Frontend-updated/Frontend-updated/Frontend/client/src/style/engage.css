@@ -1,0 +1,90 @@
+:root {
+  --cdac-blue: #003366;
+  --cdac-orange: #ff7a00;
+  --cdac-light-orange: #fff3e6;
+}
+
+/* MAIN CONTAINER */
+.engage-box {
+  background: linear-gradient(180deg, #ffffff, var(--cdac-light-orange));
+  padding: 60px 40px;
+  border-radius: 30px;
+  border: 1px solid #ffe0c2;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* TITLE */
+.engage-title {
+  text-align: center;
+  font-size: 2.7rem;
+  font-weight: 700;
+  color: var(--cdac-blue);
+  margin-bottom: 10px;
+}
+
+.engage-subtitle {
+  text-align: center;
+  max-width: 750px;
+  margin: 0 auto;
+  font-size: 1.05rem;
+  color: #555;
+}
+
+/* CARD */
+.engage-card {
+  background: #fff;
+  border-radius: 22px;
+  padding: 35px 25px;
+  text-align: center;
+  height: 100%;
+  border: 1px solid #eee;
+  transition: all 0.35s ease;
+}
+
+.engage-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--cdac-orange);
+  box-shadow: 0 20px 40px rgba(255, 122, 0, 0.25);
+}
+
+/* ICON */
+.engage-icon {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+/* CARD TEXT */
+.engage-card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--cdac-blue);
+  margin-bottom: 12px;
+}
+
+.engage-card-text {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* FOOTER */
+.engage-footer {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.engage-btn {
+  background: linear-gradient(135deg, var(--cdac-orange), #ff5500);
+  color: #fff;
+  border: none;
+  border-radius: 14px;
+  padding: 12px 45px;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.engage-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(255, 122, 0, 0.45);
+}

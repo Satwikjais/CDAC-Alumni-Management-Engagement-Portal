@@ -1,0 +1,225 @@
+.offcanvas {
+  background: #f8f9fa;
+}
+
+.offcanvas .nav-link {
+  padding: 14px 20px;
+  font-weight: 700;
+  color: #000000 !important;
+  border-bottom: 1px solid #e5e7eb;
+  transition: all 0.3s ease;
+}
+
+.offcanvas .nav-link:hover,
+.offcanvas .nav-item.dropdown .nav-link:hover {
+  background: #e9ecef;
+  color: #000000 !important;
+  border-radius: 6px;
+}
+
+.offcanvas .dropdown-menu .dropdown-item {
+  color: #000000 !important;
+}
+
+.offcanvas .dropdown-menu .dropdown-item:hover {
+  background: #e9ecef;
+  color: #000000 !important;
+}
+
+.offcanvas-backdrop.show {
+  background-color: #000000;
+  opacity: 0.65 !important;
+}
+
+.navbar-toggler {
+  border-color: #000000;
+}
+
+
+.offcanvas .nav-link,
+.offcanvas .nav-item .nav-link,
+.offcanvas .dropdown-menu .dropdown-item {
+  color: #000000 !important;
+  font-weight: 700;
+  margin-left: 20px;
+}
+
+.offcanvas .nav-link.dropdown-toggle {
+  color: #000000 !important;
+}
+
+/* Navbar Social Buttons - Header */
+.btn-facebook-nav {
+  background-color: #1877F2 !important;
+  /* Unified Login Blue */
+  border-color: #1877F2 !important;
+  color: white !important;
+}
+
+.btn-facebook-nav:hover {
+  background-color: #166fe5 !important;
+  /* Brighter blue hover */
+  border-color: #166fe5 !important;
+  color: white !important;
+  /* Ensure text stays white */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.btn-linkedin-nav {
+  background-color: #0077b5 !important;
+  border-color: #0077b5 !important;
+  color: white !important;
+}
+
+.btn-linkedin-nav:hover {
+  background-color: #006097 !important;
+  border-color: #006097 !important;
+  color: white !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== BRANDING ===== */
+.brand-divider {
+  height: 40px;
+  width: 1px;
+  background-color: #e0e0e0;
+  display: block;
+}
+
+.brand-title {
+  color: #003366;
+  /* Official Navy Blue */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  letter-spacing: 0.5px;
+}
+
+.brand-subtitle {
+  color: #f37021;
+  /* Official Orange Accent */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  /* Bolder */
+  font-size: 1rem;
+  /* Slightly larger */
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  /* Wider spacing for impact */
+}
+
+/* ===== SOCIAL FOLLOW BUTTONS ===== */
+.social-follow-btn {
+  border-radius: 50px !important;
+  /* Pill shape */
+  padding: 2px 8px !important;
+  /* Minimal padding */
+  font-weight: 600 !important;
+  font-size: 0.65rem !important;
+  /* Very small font */
+  display: inline-flex !important;
+  align-items: center;
+  gap: 4px;
+  border: none !important;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+  /* Bouncy effect */
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  height: 22px;
+  /* Enforce compact height */
+}
+
+.social-follow-btn i {
+  font-size: 0.85rem;
+  /* Tiny icon */
+}
+
+.social-follow-btn:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2) !important;
+  transform: translateY(-2px) !important;
+  filter: brightness(1.1);
+}
+
+.btn-facebook-nav {
+  background: linear-gradient(135deg, #1877F2 0%, #3b5998 100%) !important;
+  color: white !important;
+}
+
+.btn-linkedin-nav {
+  background: linear-gradient(135deg, #0077b5 0%, #004182 100%) !important;
+  color: white !important;
+}
+
+/* ===== RESPONSIVE NAVBAR FIXES ===== */
+@media (max-width: 991px) {
+
+  /* Adjust Top Bar padding */
+  .top-bar {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+  }
+
+  /* Stack the top bar elements */
+  .top-bar .container-fluid {
+    flex-direction: column;
+    align-items: center !important;
+    gap: 15px;
+  }
+
+  /* Center logo and text */
+  .logo-text {
+    justify-content: center;
+    text-align: center;
+  }
+
+  /* Social/Auth block centered */
+  .top-bar .text-end {
+    text-align: center !important;
+    justify-content: center !important;
+  }
+
+  /* Navbar Toggler Visibility */
+  .navbar-toggler {
+    border: 2px solid white !important;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 8px 12px;
+    margin-left: 10px;
+    /* spacing if needed */
+    color: white;
+  }
+
+  .navbar-toggler-icon {
+    filter: invert(1);
+    /* make it white */
+  }
+
+  /* Offcanvas Styling */
+  .offcanvas {
+    max-width: 80%;
+    /* Don't take full width on larger phones */
+  }
+
+  .offcanvas-header {
+    background: #f3f3f3;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .offcanvas-body {
+    padding: 0;
+  }
+
+  .offcanvas .nav-link {
+    margin-left: 0;
+    /* Reset margins */
+    padding: 15px 20px;
+    /* Larger touch target */
+    color: #333 !important;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .offcanvas .nav-link:active {
+    background-color: #f37021;
+    color: white !important;
+  }
+}

@@ -1,0 +1,90 @@
+/* Split login page */
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f6f8;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.login-split {
+  display: flex;
+  width: 90%;
+  max-width: 1000px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+/* Left: Login Form */
+.login-left {
+  flex: 1;
+  padding: 3rem 2rem;
+  background-color: #ffffff;
+}
+
+.login-card h3 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #222;
+}
+
+.login-card .form-control {
+  border-radius: 8px;
+  padding: 0.65rem 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #d1d3e0;
+}
+
+.login-card .btn-primary {
+  border-radius: 8px;
+  padding: 0.6rem 0;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+/* Right: CDAC Info */
+.login-right {
+  flex: 1;
+  background: linear-gradient(135deg, #eef7ff, #eaf3ff);
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.cdac-info h2 {
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #0a3d62;
+}
+
+.cdac-info p {
+  font-size: 0.95rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.cdac-info .cdac-image {
+  width: 80%;
+  border-radius: 10px;
+  margin-top: 1rem;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+/* Responsive for smaller screens */
+@media (max-width: 768px) {
+  .login-split {
+    flex-direction: column;
+  }
+  .login-left, .login-right {
+    padding: 2rem;
+  }
+  .cdac-info .cdac-image {
+    width: 100%;
+  }
+}

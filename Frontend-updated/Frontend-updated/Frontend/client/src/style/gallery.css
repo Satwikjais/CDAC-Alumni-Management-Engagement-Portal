@@ -1,0 +1,265 @@
+:root {
+  --cdac-blue: #003366;
+  --cdac-orange: #f37021;
+  /* Updated to match global button color */
+  --cdac-light-bg: #fff4e8;
+}
+
+/* TITLE */
+.gallery-title {
+  text-align: center;
+  font-size: 2.7rem;
+  font-weight: 700;
+  color: var(--cdac-blue);
+}
+
+.gallery-box {
+  background: linear-gradient(180deg,
+      #ffffff,
+      var(--cdac-light-bg));
+  padding: 50px 40px;
+  border-radius: 30px;
+  border: 1px solid #ffe1c2;
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.08),
+    inset 0 0 0 1px rgba(255, 140, 26, 0.15);
+}
+
+
+.gallery-subtitle {
+  text-align: center;
+  color: #555;
+  font-size: 1.05rem;
+  margin-top: 6px;
+}
+
+/* FILTERS */
+.gallery-filters .filter-btn {
+  padding: 10px 28px;
+  border-radius: 50px;
+  border: 2px solid var(--cdac-orange);
+  background: white;
+  color: var(--cdac-orange);
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 1rem;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+}
+
+.gallery-filters .filter-btn:hover,
+.gallery-filters .filter-btn.active {
+  background: var(--cdac-orange);
+  color: white;
+  box-shadow: 0 6px 15px rgba(243, 112, 33, 0.4);
+  transform: translateY(-2px);
+  border-color: var(--cdac-orange);
+}
+
+/* MASONRY GRID */
+.masonry-grid {
+  column-count: 3;
+  column-gap: 24px;
+}
+
+.masonry-item {
+  break-inside: avoid;
+  margin-bottom: 24px;
+}
+
+/* GALLERY CARD */
+.gallery-card {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.35s ease;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+  background: #fff;
+  /* Ensure bg is white */
+}
+
+/* Adjust image height to be auto for masonry variability or keep fixed? */
+/* For masonry, variable height is nicer. But if images are same aspect ratio, it acts like a grid. */
+/* Let's let them be flexible height if the images differ, or fixed if we want uniformity. */
+/* Given users usually have mixed aspect ratios in galleries, I'll set width 100% and height auto, but allow a min-height. */
+
+.gallery-card img {
+  width: 100%;
+  height: auto;
+  /* Changed from fixed 260px to auto for true masonry feel */
+  display: block;
+  /* Removes bottom space */
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+
+.gallery-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-card:hover img {
+  transform: scale(1.05);
+}
+
+/* OVERLAY */
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg,
+      rgba(0, 0, 0, 0.8) 0%,
+      rgba(0, 0, 0, 0.3) 50%,
+      rgba(255, 255, 255, 0) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  /* Align bottom */
+  align-items: center;
+  padding-bottom: 30px;
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.gallery-card:hover .gallery-overlay {
+  opacity: 1;
+}
+
+.gallery-overlay h5 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.gallery-overlay span {
+  font-size: 0.85rem;
+  margin-top: 0;
+  color: #fca311;
+  /* Lighter orange/yellow for contrast */
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* LIGHTBOX */
+.gallery-lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.90);
+  /* Darker backdrop */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  backdrop-filter: blur(5px);
+}
+
+.lightbox-content {
+  background: transparent;
+  /* Remove white box */
+  padding: 0;
+  border-radius: 0;
+  max-width: 900px;
+  width: 90%;
+  position: relative;
+  animation: zoomIn 0.4s ease;
+  text-align: center;
+}
+
+.lightbox-content img {
+  width: auto;
+  max-width: 100%;
+  border-radius: 8px;
+  max-height: 80vh;
+  object-fit: contain;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+/* CAPTION */
+.lightbox-caption {
+  margin-top: 20px;
+  text-align: center;
+  color: white;
+}
+
+.lightbox-caption h5 {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.lightbox-caption p {
+  font-size: 1rem;
+  color: #ddd;
+  margin-bottom: 12px;
+}
+
+/* CLOSE BUTTON */
+.lightbox-close {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  padding: 0;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
+
+.lightbox-close:hover {
+  opacity: 1;
+  color: var(--cdac-orange);
+  background: none;
+}
+
+/* ANIMATION */
+@keyframes zoomIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+
+@media (max-width: 992px) {
+  .masonry-grid {
+    column-count: 2;
+    column-gap: 15px;
+  }
+}
+
+@media (max-width: 576px) {
+  .masonry-grid {
+    column-count: 1;
+  }
+
+  .gallery-box {
+    padding: 20px 15px;
+    border-radius: 15px;
+  }
+
+  .gallery-title {
+    font-size: 2rem;
+  }
+
+  .gallery-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .gallery-filters .filter-btn {
+    padding: 6px 16px;
+    font-size: 0.85rem;
+  }
+}
