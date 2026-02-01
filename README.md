@@ -130,7 +130,9 @@ git commit -m "Add new feature"
 👨‍💻 Author
 
 Satwik Jaiswal
+
 CDAC Trainee | Java & Full-Stack Developer
+
 GitHub: https://github.com/Satwikjais
 
 📄 License
@@ -141,5 +143,4 @@ This project is intended for educational and academic purposes only.
 
 Give it a ⭐ on GitHub — it motivates further development!
 
-✅ Final Step (IMPORTANT)
-Commit this README:
+
