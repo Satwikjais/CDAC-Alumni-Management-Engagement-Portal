@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../style/careers.css';
 
@@ -6,6 +7,7 @@ const Careers = () => {
   const [jobs, setJobs] = useState([]);
   const [resume, setResume] = useState(null);
   const user = JSON.parse(localStorage.getItem('user'));
+    const navigate = useNavigate();
 
   useEffect(() => {
     fetchJobs();
@@ -92,14 +94,23 @@ const Careers = () => {
                     {/* <div className="career-card-icon">{item.icon}</div> */}
                     <h4>{item.title}</h4>
                     <p>{item.desc}</p>
-                    <a
-                      href={item.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn btn-cdac-orange"
-                    >
-                      Know More →
-                    </a>
+                      {item.external ? (
+                        <a
+                          href={item.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn btn-cdac-orange"
+                        >
+                          Know More →
+                        </a>
+                      ) : (
+                        <button
+                          className="btn btn-cdac-orange"
+                          onClick={() => navigate(item.link)}
+                        >
+                          Know More →
+                        </button>
+                      )}
                   </div>
                 </div>
               ))}
@@ -107,36 +118,34 @@ const Careers = () => {
             </div>
 
             {/* ========= ALUMNI OPPORTUNITIES SECTION ========= */}
-            <div className="mt-5">
-
-
-              {/* Job Cards Row */}
+            <div className="mt-5" id="alumni-jobs-section">
               <div className="row g-4">
-                {jobs.length > 0 &&
-                  jobs.map(job => (
-                    <div className="col-md-6" key={job.id}>
-                      <div className="card h-100 shadow-sm border-0" style={{ borderRadius: '12px' }}>
-                        <div className="card-body p-4">
-                          <h5 className="card-title fw-bold text-primary mb-1">{job.title}</h5>
-                          <div className="mb-2">
-                            <span className="badge bg-light text-dark border me-2">{job.company}</span>
-                            <span className="text-muted small"><i className="bi bi-geo-alt-fill me-1"></i>{job.location}</span>
-                          </div>
-                          <p className="card-text text-secondary small mb-3">{job.description}</p>
-
-                          {job.apply_link ? (
-                            <a href={job.apply_link} target="_blank" rel="noreferrer" className="btn btn-cdac-orange btn-sm w-100">Apply Externally</a>
-                          ) : (
-                            <div className="input-group input-group-sm mt-3">
-                              <input type="file" className="form-control" onChange={(e) => setResume(e.target.files[0])} accept=".pdf,.doc,.docx" />
-                              <button className="btn btn-cdac-orange" type="button" onClick={() => handleApply(job.id)}>Apply</button>
+                {jobs.length > 0 ? (
+                  jobs
+                    .filter(job => job.postedByAlumni) // Only show jobs posted by alumni
+                    .map(job => (
+                      <div className="col-md-6" key={job.id}>
+                        <div className="card h-100 shadow-sm border-0" style={{ borderRadius: '12px' }}>
+                          <div className="card-body p-4">
+                            <h5 className="card-title fw-bold text-primary mb-1">{job.title}</h5>
+                            <div className="mb-2">
+                              <span className="badge bg-light text-dark border me-2">{job.company}</span>
+                              <span className="text-muted small"><i className="bi bi-geo-alt-fill me-1"></i>{job.location}</span>
                             </div>
-                          )}
+                            <p className="card-text text-secondary small mb-3">{job.description}</p>
+                            {job.apply_link ? (
+                              <a href={job.apply_link} target="_blank" rel="noreferrer" className="btn btn-cdac-orange btn-sm w-100">Apply Externally</a>
+                            ) : (
+                              <div className="input-group input-group-sm mt-3">
+                                <input type="file" className="form-control" onChange={(e) => setResume(e.target.files[0])} accept=".pdf,.doc,.docx" />
+                                <button className="btn btn-cdac-orange" type="button" onClick={() => handleApply(job.id)}>Apply</button>
+                              </div>
+                            )}
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  ))
-                }
+                    ))
+                ) : null}
               </div>
             </div>
 
@@ -156,24 +165,25 @@ const careerCards = [
     title: "Jobs",
     desc: "Explore current openings and career opportunities at C-DAC.",
     link: "https://www.cdac.in/index.aspx?id=current_jobs",
-
+    external: true
   },
   {
-    title: "Recruitment FAQs",
-    desc: "Frequently asked questions about C-DAC recruitment and pay scales.",
-    link: "https://www.cdac.in/index.aspx?id=pdf_hrd&dynamicId=FAQ-for-recrutiment-pay-scale.pdf",
+    title: "Jobs Posted by Alumni",
+    desc: "See opportunities posted by C-DAC alumni.",
+    link: "/alumni-jobs-list",
+    external: false
   },
   {
     title: "Corporate Profile",
     desc: "Learn more about India’s leading multidisciplinary IT organization.",
     link: "https://www.cdac.in/index.aspx?id=CorporateProfile",
-
+    external: true
   },
   {
     title: "Work Environment",
     desc: "Understand C-DAC’s culture, leadership and work ethics.",
     link: "https://www.cdac.in/index.aspx?id=workenv",
-
+    external: true
   },
 ];
 

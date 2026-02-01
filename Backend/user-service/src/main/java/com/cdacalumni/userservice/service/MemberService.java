@@ -1,4 +1,8 @@
+
 package com.cdacalumni.userservice.service;
+import jakarta.annotation.PostConstruct;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.beans.factory.annotation.Value;
 
 import com.cdacalumni.userservice.dto.MemberDTO;
 import com.cdacalumni.userservice.entity.Member;
@@ -12,6 +16,31 @@ import java.util.stream.Collectors;
 
 @Service
 public class MemberService {
+
+    @Autowired(required = false)
+    private JdbcTemplate jdbcTemplate;
+
+    @Value("${spring.datasource.url:}")
+    private String datasourceUrl;
+
+    /**
+     * Syncs ALUMNI users from the users table (auth-service DB) to the members table if not already present.
+     * This should be called on startup.
+     */
+    @PostConstruct
+    public void syncAlumniUsersToMembers() {
+        if (jdbcTemplate == null || datasourceUrl == null || datasourceUrl.isEmpty()) return;
+        // Try to copy users with role 'ALUMNI' from users table to members table if not present
+        String sql = "INSERT INTO members (email, first_name, last_name, is_alumni, created_at, updated_at) " +
+                "SELECT u.email, u.first_name, u.last_name, TRUE, NOW(), NOW() FROM users u " +
+                "LEFT JOIN members m ON u.email = m.email " +
+                "WHERE u.role = 'ALUMNI' AND m.email IS NULL;";
+        try {
+            jdbcTemplate.execute(sql);
+        } catch (Exception e) {
+            System.err.println("[WARN] Could not sync alumni users to members: " + e.getMessage());
+        }
+    }
 
     @Autowired
     private MemberRepository memberRepository;

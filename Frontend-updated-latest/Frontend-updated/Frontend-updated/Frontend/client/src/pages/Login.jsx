@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Card, Form, Input, Button, Alert, Row, Col } from 'antd';
 import { LoginOutlined, UserOutlined, LockOutlined } from '@ant-design/icons';
+import { authAPI, setToken } from '../services/api';
 // import '../style/login.css'; // Removed to use global index.css theme
 
 const Login = () => {
@@ -13,12 +13,27 @@ const Login = () => {
   const onFinish = async (values) => {
     setLoading(true);
     try {
-      const res = await axios.post('/api/auth/login', values);
-      localStorage.setItem('user', JSON.stringify(res.data.user));
+      const response = await authAPI.login(values.email, values.password);
+      
+      if (response.error) {
+        setError(response.error);
+        return;
+      }
+
+      // Store token and user info
+      setToken(response.token);
+      localStorage.setItem('user', JSON.stringify({
+        id: response.userId,
+        email: response.email,
+        firstName: response.firstName,
+        lastName: response.lastName,
+        role: response.role
+      }));
+      
       navigate('/');
       window.location.reload();
     } catch (err) {
-      setError(err.response?.data?.message || 'Login failed');
+      setError(err.message || 'Login failed');
     } finally {
       setLoading(false);
     }

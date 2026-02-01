@@ -28,7 +28,7 @@ public class MemberController {
     @GetMapping("/email/{email}")
     public ResponseEntity<MemberDTO> getMemberByEmail(@PathVariable String email) {
         return ResponseEntity.ok(memberService.getMemberByEmail(email));
-    }
+    }   
 
     @GetMapping
     public ResponseEntity<List<MemberDTO>> getAllMembers(

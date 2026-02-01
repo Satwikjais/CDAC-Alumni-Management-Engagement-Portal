@@ -10,17 +10,74 @@ import { FcGoogle } from "react-icons/fc";
 
 const Home = () => {
   const navigate = useNavigate();
+
   // Directory Search State
   const [directoryFilters, setDirectoryFilters] = useState({
-    name: '',
-    batch: '',
-    course: '',
-    company: ''
+    name: "",
+    year: null,
+    course: null,
+    company: ""
   });
+
+  
+  const [alumniList, setAlumniList] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+
+
+
+
+  // Handler for controlled input changes in alumni directory
+  const handleDirectoryAntChange = (key, value) => {
+    setDirectoryFilters(prev => ({ ...prev, [key]: value }));
+    setDirectoryPage(1);
+  };
   const [directoryMembers, setDirectoryMembers] = useState([]);
   const [directoryPage, setDirectoryPage] = useState(1);
   const [directoryTotalPages, setDirectoryTotalPages] = useState(0);
   const [directoryLoading, setDirectoryLoading] = useState(false);
+
+  // Fetch directory members (restored)
+  // const fetchDirectoryMembers = async () => {
+  //     //
+  //   setDirectoryLoading(true);
+  //   try {
+  //     // Fetch all alumni from backend
+  //     let alumni = await membersAPI.getAlumni();
+  //     //
+  //     // If backend returns a single object, wrap it in an array
+  //     if (alumni && !Array.isArray(alumni)) alumni = [alumni];
+  //     let filtered = alumni;
+  //     // Filter by name
+  //     if (directoryFilters.name) {
+  //       const search = directoryFilters.name.toLowerCase();
+  //       filtered = filtered.filter(m =>
+  //         (m.firstName && m.firstName.toLowerCase().includes(search)) ||
+  //         (m.lastName && m.lastName.toLowerCase().includes(search)) ||
+  //         (`${m.firstName || ''} ${m.lastName || ''}`.toLowerCase().includes(search))
+  //       );
+  //     }
+  //     // Filter by batch
+  //     if (directoryFilters.batch) {
+  //       filtered = filtered.filter(m => m.graduationYear === directoryFilters.batch);
+  //     }
+  //     // Filter by course
+  //     if (directoryFilters.course) {
+  //       filtered = filtered.filter(m => m.course === directoryFilters.course);
+  //     }
+  //     // Filter by company
+  //     if (directoryFilters.company) {
+  //       filtered = filtered.filter(m => m.company && m.company.toLowerCase().includes(directoryFilters.company.toLowerCase()));
+  //     }
+  //     setDirectoryMembers(filtered);
+  //     setDirectoryTotalPages(1);
+  //   } catch (err) {
+  //     setDirectoryMembers([]);
+  //     setDirectoryTotalPages(1);
+  //   } finally {
+  //     setDirectoryLoading(false);
+  //   }
+  // };
 
   // Debounced Auto-Search for Home Page
   useEffect(() => {
@@ -28,31 +85,61 @@ const Home = () => {
       fetchDirectoryMembers();
     }, 800);
     return () => clearTimeout(timer);
-  }, [directoryPage, directoryFilters]);
+    // eslint-disable-next-line
+  }, [directoryFilters, directoryPage]);
+
 
   const fetchDirectoryMembers = async () => {
-    setDirectoryLoading(true);
-    try {
-      const activeFilters = Object.fromEntries(
-        Object.entries(directoryFilters).filter(([_, v]) => v && v !== '')
+  try {
+    setLoading(true);
+
+    const response = await axios.get(
+      "http://localhost:8080/api/members/alumni/list"
+    );
+
+    let data = response.data;
+
+    // 🔍 Name filter (firstName + lastName)
+    if (directoryFilters.name) {
+      data = data.filter((item) =>
+        `${item.firstName} ${item.lastName}`
+          .toLowerCase()
+          .includes(directoryFilters.name.toLowerCase())
       );
-      const params = { ...activeFilters, page: directoryPage, limit: 4 }; // Limit to 4 for Home Page to keep it compact?
-
-      const res = await axios.get('/api/members', { params });
-      setDirectoryMembers(res.data.members || []);
-      setDirectoryTotalPages(res.data.totalPages || 0);
-    } catch (error) {
-      console.error('Error fetching directory', error);
-      setDirectoryMembers([]);
-    } finally {
-      setDirectoryLoading(false);
     }
-  };
 
-  const handleDirectoryAntChange = (key, value) => {
-    setDirectoryFilters(prev => ({ ...prev, [key]: value }));
-    setDirectoryPage(1);
-  };
+    // 🎓 Course filter
+    if (directoryFilters.course) {
+      data = data.filter(
+        (item) => item.course === directoryFilters.course
+      );
+    }
+
+    // 🏢 Company filter
+    if (directoryFilters.company) {
+      data = data.filter((item) =>
+        item.company?.toLowerCase().includes(
+          directoryFilters.company.toLowerCase()
+        )
+      );
+    }
+
+    // 📅 Graduation year filter
+    if (directoryFilters.year) {
+      const selectedYear = dayjs(directoryFilters.year).year();
+      data = data.filter(
+        (item) => Number(item.graduationYear) === selectedYear
+      );
+    }
+
+    setAlumniList(data);
+  } catch (error) {
+    console.error("Failed to fetch alumni", error);
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   // Carousel manual ID 
   const carouselId = "homeCarousel";
@@ -262,9 +349,9 @@ const Home = () => {
               <i className="bi bi-briefcase me-2" ></i> Jobs & Internships
             </div>
             <div className="card-body">
-              <p>Latest opportunities shared by alumni.</p>
-              <Link to="/jobs" className="btn btn-cdac-orange">
-                View Opportunities
+              <p>Alumni can share job, internship, and referral opportunities here.</p>
+              <Link to="/opportunities" className="btn btn-cdac-orange">
+                Share Opportunities
               </Link>
             </div>
           </div>
@@ -374,37 +461,47 @@ const Home = () => {
                 <div className="row g-3">
                   {/* Name Search */}
                   <div className="col-lg-3 col-md-6">
-                    <Input
-                      placeholder="Search by Name"
-                      size="large"
-                      prefix={<SearchOutlined className="text-muted" />}
-                      allowClear
-                      value={directoryFilters.name}
-                      onChange={(e) => handleDirectoryAntChange('name', e.target.value)}
-                    />
+                   <Input
+  placeholder="Search by Name"
+  size="large"
+  prefix={<SearchOutlined className="text-muted" />}
+  allowClear
+  value={directoryFilters.name}
+  onChange={(e) =>
+    setDirectoryFilters({ ...directoryFilters, name: e.target.value })
+  }
+/>
+
                   </div>
 
                   {/* Batch Year (Calendar) */}
                   <div className="col-lg-3 col-md-6">
-                    <DatePicker
-                      picker="year"
-                      placeholder="Batch Year"
-                      style={{ width: '100%' }}
-                      size="large"
-                      onChange={(date, dateString) => handleDirectoryAntChange('batch', dateString)}
-                    />
+                   <DatePicker
+  picker="year"
+  placeholder="Batch Year"
+  style={{ width: "100%" }}
+  size="large"
+  value={directoryFilters.year}
+  onChange={(value) =>
+    setDirectoryFilters({ ...directoryFilters, year: value })
+  }
+/>
+
                   </div>
 
                   {/* Course Selection */}
                   <div className="col-lg-3 col-md-6">
-                    <Select
-                      placeholder="Course"
-                      style={{ width: '100%' }}
-                      size="large"
-                      allowClear
-                      value={directoryFilters.course || undefined}
-                      onChange={(value) => handleDirectoryAntChange('course', value)}
-                    >
+                   <Select
+  placeholder="Course"
+  style={{ width: "100%" }}
+  size="large"
+  allowClear
+  value={directoryFilters.course || undefined}
+  onChange={(value) =>
+    setDirectoryFilters({ ...directoryFilters, course: value })
+  }
+>
+
                       <Select.Option value="PG-DAC">PG-DAC</Select.Option>
                       <Select.Option value="PG-DBDA">PG-DBDA</Select.Option>
                       <Select.Option value="PG-DESD">PG-DESD</Select.Option>
@@ -418,13 +515,16 @@ const Home = () => {
 
                   {/* Company Search */}
                   <div className="col-lg-3 col-md-6">
-                    <Input
-                      placeholder="Company"
-                      size="large"
-                      allowClear
-                      value={directoryFilters.company}
-                      onChange={(e) => handleDirectoryAntChange('company', e.target.value)}
-                    />
+                 <Input
+  placeholder="Company"
+  size="large"
+  allowClear
+  value={directoryFilters.company}
+  onChange={(e) =>
+    setDirectoryFilters({ ...directoryFilters, company: e.target.value })
+  }
+/>
+
                   </div>
                 </div>
 
@@ -432,44 +532,42 @@ const Home = () => {
                 <div className="d-flex justify-content-center mt-4">
                   <button
                     className="btn btn-cdac-orange px-5 py-2 rounded"
-                    onClick={() => {
-                      const params = new URLSearchParams();
-                      if (directoryFilters.name) params.append('search', directoryFilters.name);
-                      if (directoryFilters.batch) params.append('batch', directoryFilters.batch);
-                      if (directoryFilters.course) params.append('course', directoryFilters.course);
-                      if (directoryFilters.company) params.append('company', directoryFilters.company);
-                      navigate(`/members?${params.toString()}`);
-                    }}
+                    onClick={fetchDirectoryMembers}
                   >
                     Search Alumni <i className="bi bi-search ms-2"></i>
                   </button>
+                  
                 </div>
 
                 {/* Results Grid (Live Search) */}
                 <div className="row g-4 mt-4">
-                  {directoryMembers.length > 0 ? directoryMembers.map(member => (
-                    <div className="col-lg-3 col-md-4 col-sm-6" key={member.id}>
-                      <Card hoverable className="h-100 text-center border-0 shadow-sm" bodyStyle={{ padding: '15px' }}>
-                        <img
-                          src={member.profile_pic || '/images/docs/Student1.png'}
-                          alt={member.name}
-                          className="rounded-circle mb-2 shadow-sm"
-                          style={{ width: '70px', height: '70px', objectFit: 'cover' }}
-                          onError={(e) => e.target.src = 'https://via.placeholder.com/70'}
-                        />
-                        <h6 className="fw-bold text-dark mb-1 small">{member.name}</h6>
-                        <p className="text-muted small mb-2" style={{ fontSize: '0.8rem' }}>{member.course} ({member.batch_year})</p>
-                        <div className="d-grid">
-                          <Link to={`/members?search=${member.name}`} className="btn btn-outline-primary btn-sm rounded-pill py-0" style={{ fontSize: '0.8rem' }}>View</Link>
-                        </div>
-                      </Card>
-                    </div>
-                  )) : (
-                    // Only show empty if user has typed something? Or just show initial state?
-                    // For now showing empty if loaded.
-                    directoryFilters.name || directoryFilters.batch || directoryFilters.course || directoryFilters.company ?
-                      <div className="text-center py-3"><p className="text-muted mb-0">No alumni found.</p></div> : null
-                  )}
+                 <div className="row mt-5">
+  {loading && <p className="text-center">Loading...</p>}
+
+  {!loading && alumniList.length === 0 && (
+    <p className="text-center text-muted">No alumni found</p>
+  )}
+
+  {alumniList.map((alumni) => (
+    <div key={alumni.id} className="col-md-4 mb-4">
+      <div className="card shadow-sm h-100">
+        <div className="card-body">
+          <h5 className="fw-bold">
+            {alumni.firstName} {alumni.lastName}
+          </h5>
+          <p className="mb-1"><b>Course:</b> {alumni.course}</p>
+          <p className="mb-1"><b>Company:</b> {alumni.company || "N/A"}</p>
+          <p className="mb-1">
+            <b>Graduation Year:</b> {alumni.graduationYear || "N/A"}
+          </p>
+          <p className="mb-0 text-muted">{alumni.email}</p>
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
+                   
+                 
                 </div>
 
                 {/* Pagination (Mini) */}

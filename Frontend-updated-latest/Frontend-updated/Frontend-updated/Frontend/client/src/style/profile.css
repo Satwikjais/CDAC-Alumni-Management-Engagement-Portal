@@ -1,0 +1,46 @@
+/* Profile Page Styles */
+.profile-page {
+  background: linear-gradient(135deg, #f8fafc 0%, #fbeee6 100%);
+  min-height: 80vh;
+}
+
+.profile-card {
+  border: none;
+  border-radius: 18px;
+  box-shadow: 0 6px 32px 0 rgba(243,112,33,0.10), 0 1.5px 6px 0 rgba(0,0,0,0.04);
+  background: #fff;
+  padding: 2.5rem 2rem 2rem 2rem;
+  margin-top: 2rem;
+}
+
+.profile-avatar {
+  border: 4px solid #f37021;
+  box-shadow: 0 2px 12px 0 rgba(243,112,33,0.15);
+  background: #fff;
+}
+
+.text-cdac-blue {
+  color: #003366 !important;
+}
+
+.bg-cdac-orange {
+  background: #f37021 !important;
+  color: #fff !important;
+}
+
+.btn-cdac-orange {
+  background: #f37021 !important;
+  color: #fff !important;
+  border: none;
+  transition: background 0.2s;
+}
+.btn-cdac-orange:hover, .btn-cdac-orange:focus {
+  background: #d95e13 !important;
+  color: #fff !important;
+}
+
+@media (max-width: 768px) {
+  .profile-card {
+    padding: 1.5rem 0.5rem 1.5rem 0.5rem;
+  }
+}

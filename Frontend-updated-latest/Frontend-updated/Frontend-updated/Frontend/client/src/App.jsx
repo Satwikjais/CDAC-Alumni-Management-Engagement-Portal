@@ -20,6 +20,11 @@ import Blog from './pages/Blog.jsx';
 import ContactUs from './pages/ContactUs.jsx';
 import PrivateRoute from './components/PrivateRoute.jsx';
 
+import AlumniJobsList from './pages/AlumniJobsList.jsx';
+import Opportunities from './pages/Opportunities.jsx';
+
+import MyProfile from './pages/MyProfile.jsx';
+
 function App() {
     return (
         <Router>
@@ -40,6 +45,9 @@ function App() {
                         <Route path="/engage" element={<Engage />} />
                         <Route path="/testimonials" element={<Testimonials />} />
                         <Route path="/blog" element={<Blog />} />
+                        <Route path="/my-profile" element={<PrivateRoute><MyProfile /></PrivateRoute>} />
+                        <Route path="/opportunities" element={<Opportunities />} />
+                        <Route path="/alumni-jobs-list" element={<AlumniJobsList />} />
                         <Route path="/admin" element={<PrivateRoute role="admin"><Admin /></PrivateRoute>} />
                         <Route path="/contact-us" element={<ContactUs />} />
                         

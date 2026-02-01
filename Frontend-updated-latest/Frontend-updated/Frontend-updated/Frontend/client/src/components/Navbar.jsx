@@ -58,11 +58,17 @@ const Navbar = () => {
                             </div>
 
                             {/* Row 2: User Actions (Aligned under Socials) */}
-                            {user && (
-                                <div className="d-flex align-items-center justify-content-end gap-2">
-                                    <small className="text-muted me-1 d-none d-sm-block" style={{ fontSize: '0.85rem' }}>Welcome, {user.name.split(' ')[0]}</small>
-                                </div>
-                            )}
+                                                        {user && (
+                                                            <div className="d-flex align-items-center gap-2 mt-1">
+                                                                <small className="text-muted d-none d-sm-block" style={{ fontSize: '0.95rem' }}>
+                                                                    Welcome, {user.firstName}
+                                                                </small>
+                                                                <Link to="/my-profile" className="btn btn-cdac-orange btn-sm px-3 rounded-pill">
+                                                                    <i className="bi bi-person-circle me-1"></i> My Profile
+                                                                </Link>
+                                                            </div>
+                                                        )}
+
                         </div>
                     </div>
                 </div>
@@ -86,6 +92,13 @@ const Navbar = () => {
                     {/* DESKTOP MENU  */}
                     <div className="collapse navbar-collapse d-none d-lg-flex">
                         <ul className="navbar-nav nav-equal w-100 flex-wrap flex-lg-nowrap">
+                                                        {user && (
+                                                            <li className="nav-item d-lg-none">
+                                                                <Link className="nav-link text-cdac-orange fw-bold" to="/my-profile">
+                                                                    <i className="bi bi-person-circle me-1"></i> My Profile
+                                                                </Link>
+                                                            </li>
+                                                        )}
                             <li className="nav-item"><Link className="nav-link" to="/">Home Page</Link></li>
                             <li className="nav-item"><Link className="nav-link" to="/about">About Us</Link></li>
                             <li className="nav-item"><Link className="nav-link" to="/members">Members</Link></li>
