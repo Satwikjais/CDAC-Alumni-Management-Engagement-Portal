@@ -28,6 +28,7 @@ Alumni engagement is improved through a structured digital platform
 This project was developed as part of a CDAC academic capstone, following industry-oriented design principles.
 
 ✨ Key Features
+
 🔐 Secure alumni registration & login
 📋 Alumni directory with search & filters
 🧩 Modular backend using microservices
@@ -37,11 +38,15 @@ This project was developed as part of a CDAC academic capstone, following indust
 
 🛠️ Tech Stack
 Frontend :- React.js, Vite ,React Router , Axios ,Bootstrap / Custom CSS
+
 Backend :- Java 17+, Spring Boot, Spring Web (REST APIs), Spring Data JPA, Maven ,MySQL
+
 Tools :- Git & GitHub ,Postman ,VS Code / IntelliJ IDEA
 
 🏗️ Project Architecture
+
 CDAC-Alumni-Management-Engagement-Portal
+
 │
 ├── Backend
 │   └── user-service
@@ -103,12 +108,17 @@ RESTful API design
 Modular & scalable folder structure
 
 🛣️ Roadmap:-
+
 🔐 JWT authentication & Spring Security
+
 👥 Role-based access control (Admin / Alumni)
+
 💼 Alumni job & opportunity postings
+
 📧 Email & notification service
 
 🤝 Contribution Guidelines:-
+
 Contributions are welcome for learning and improvement.
 1.Fork the repository
 2.Create a feature branch
@@ -118,14 +128,17 @@ git commit -m "Add new feature"
 4.Push and open a Pull Request
 
 👨‍💻 Author
+
 Satwik Jaiswal
 CDAC Trainee | Java & Full-Stack Developer
 GitHub: https://github.com/Satwikjais
 
 📄 License
+
 This project is intended for educational and academic purposes only.
 
 ⭐ If you like this project
+
 Give it a ⭐ on GitHub — it motivates further development!
 
 ✅ Final Step (IMPORTANT)
